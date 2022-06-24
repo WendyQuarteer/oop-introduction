@@ -19,7 +19,8 @@ Try to get this error on the screen= Fatal error: Uncaught Error: Call to undefi
 USE TYPEHINTING EVERYWHERE!
 */
 class Beer extends Beverage {
-    public string $name;
+                                    //Make class beer that extends from Beverage = child
+    public string $name;            //+creating extra properties for this new class
     public float $alcoholPercentage;
 
     /**
@@ -28,26 +29,26 @@ class Beer extends Beverage {
      */
     public function __construct(string $name, float $alcoholPercentage, string $color, float $price)
     {
-        parent:: __construct($color, $price);
-        $this->name = $name;
+        parent:: __construct($color, $price);       //add the parent constructor
+        $this->name = $name;                        //assign values to the properties
         $this->alcoholPercentage = $alcoholPercentage;
     }
 
     /**
      * @return float
      */
-    public function getAlcoholPercentage(): float
+    public function getAlcoholPercentage(): float   //Make a getAlcoholPercentage function which returns the alocoholPercentage.  Also the name equal to Duvel and the alcohol percentage to 8,5%.
     {
         return $this->alcoholPercentage;
     }
 }
-$duvel = new Beer("Duvel", 8.5, "blond", 3.5);
+$duvel = new Beer("Duvel", 8.5, "blond", 3.5); //Instantiate an object which represents Duvel. Make sure that the color is set to blond, the price equals 3.5 euro and the temperature to cold automatically.
 echo "<br>";
-echo $duvel->getAlcoholPercentage();
+echo $duvel->getAlcoholPercentage(); //Print the getAlcoholPercentage
 echo "<br>";
-echo $duvel->alcoholPercentage;
+echo $duvel->alcoholPercentage;     //Print the alcoholPercentage in a different way
 echo "<br>";
-echo $duvel->color;
+echo $duvel->color;                 //print the color on the screen
 echo "<br>";
-$duvel->getInfo();
+$duvel->getInfo();                  //print the getInfo on the screen
 echo "<br>";

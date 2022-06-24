@@ -18,7 +18,7 @@ USE TYPEHINTING EVERYWHERE!
 class Beverage {            //new class = template for objects (starts with capital).
     public string $color;   //create properties.
     public float $price;    //string-integer-float-integer string- -
-    public string $temperature;  //public = always access // protected = only inheriting class has access // private = only accessed by public methods inside the class.
+    public string $temperature;  //public = always access // protected = only from within class or inheriting class has access // private = only accessed by public methods inside the class.
 
     /**                      //annotations provide supplemental information.
      * @param string $color
@@ -27,7 +27,7 @@ class Beverage {            //new class = template for objects (starts with capi
     public function __construct(string $color, float $price) //__construct function = will automatically be called when a new object is created from the class.
     {
         $this->color = $color;          //$this = reference to property within the same class -> property-name = property.
-        $this->price = $price;
+        $this->price = $price;          //assigning values to the properties
         $this->temperature = "cold";    //temperature-property gets default value: cold.
     }
 
