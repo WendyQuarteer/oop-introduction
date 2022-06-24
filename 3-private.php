@@ -17,7 +17,7 @@ TODO: Print this method on the screen on a new line.
 USE TYPEHINTING EVERYWHERE!
 */
 class Beverage {
-    private string $color;
+    private string $color;          //private properties can only be accessed from within the class
     private float $price;
     private string $temperature;
 
@@ -35,7 +35,7 @@ class Beverage {
     /**
      * @return string
      */
-    public function getColor(): string
+    public function getColor(): string      // Method to get the color.
     {
         return $this->color;
     }
@@ -72,12 +72,12 @@ class Beer extends Beverage {
     /**
      * @param string $color
      */
-    public function setColor(string $color): string
+    public function setColor(string $color): string         //Method to change the color of Duvel to light instead of blond
     {
         return $this->color = $color;
     }
 
-    private function beerInfo(): void
+    private function beerInfo(): void                       // Create a new private method in the Beer class called beerInfo which returns "Hi i'm Duvel and have an alcochol percentage of 8.5 and I have a light color."
     {
         echo "Hi i'm $this->name and have an alcohol percentage of $this->alcoholPercentage and I have a $this->color color.";
     }
@@ -92,6 +92,6 @@ echo $duvel->getColor();
 echo "<br>";
 $duvel->getInfo();
 echo "<br>";
-echo $duvel->setColor("Light");
+echo $duvel->setColor("Light");  //print this new color on the screen
 echo "<br>";
 echo $duvel->beerInfo();
