@@ -13,7 +13,7 @@ USE TYPEHINTING EVERYWHERE!
 */
 
 class Beverage {
-    protected string $color;
+    protected string $color;        // make properties protected = can be accessed within the class and by classes derived from that class.
     protected float $price;
     protected string $temperature;
 
@@ -73,7 +73,7 @@ class Beer extends Beverage {
         $this->color = $color;
     }
 
-    public function beerInfo(): void
+    public function beerInfo(): void            // method needs to be public in order to get access to the properties.
     {
         echo "Hi i'm $this->name and have an alcohol percentage of $this->alcoholPercentage and I have a $this->color color.";
     }
