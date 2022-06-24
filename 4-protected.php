@@ -31,12 +31,12 @@ class Beverage {
     /**
      * @return string
      */
-    public function getColor(): string
+    public function getColor(): string              //string: a string will be returned
     {
         return $this->color;
     }
 
-    public function getInfo(): void
+    public function getInfo(): void                 //void: nothing will be returned
     {
         echo "This beverage is $this->temperature and $this->color";
     }
@@ -60,7 +60,7 @@ class Beer extends Beverage {
     /**
      * @return float
      */
-    public function getAlcoholPercentage(): float
+    public function getAlcoholPercentage(): float           //float: a decimal number will be returned
     {
         return $this->alcoholPercentage;
     }
