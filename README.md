@@ -71,8 +71,22 @@ but can still be reached from within the class itself and it's children/extended
   - otherwise, the price will be changed.
 - to display the new price, the price property will need to be set to public otherwise the function will not run.  
 Then,just call the function with the new price as parameter.
-   
+
 ### Conclusion: it is always best to keep it private.  If really necessary protected is the next safe way to go.  Sometimes we have no other chance than turning it to public in order to make your code work.
+
+## Exercise 6: Learn how constants work and when to display them.## 
+1. Constants are declared just like the changeable variables, inside the class.
+Once declared, they can no longer be changed.
+- const CONST_VALUE = "value of the constant";
+2. To access the constants from within the class a public function needs to be created.
+- use the self-keyword followed by the :: (=scope resolution operator).
+3. To access from within a class derived from the class where the contant was declared
+another function needs to be made.
+- use the parent::name of the function();
+4. print the constant:
+  - directly : echo ClassName::CONSTANT_NAME;
+  - from the function within the same class or child-class: echo $object::functionName();
+
 
 
 
