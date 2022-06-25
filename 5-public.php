@@ -3,48 +3,50 @@
 declare(strict_types=1);
 
 /* EXERCISE 5
-
 Copy the class of exercise 1.
-
-TODO: Change the properties to private.
-TODO: Fix the errors without using getter and setter functions.
-TODO: Change the price to 3.5 euro and print it also on the screen on a new line.
 */
 
 class Beverage
 {
-    private string $color;          //private = can only be accessed within the class.
-    public float $price;
+//TODO: Change the properties to private.
+    private string $color;           //private = can only be accessed from within class.
+    public float $price;             //changed to public in order to access it in the changePrice()
     private string $temperature;
 
-    /**
+    /**                              //annotations provide supplemental information.
      * @param string $color
-     * @param float|int $price
+     * @param float $price
      */
     public function __construct(string $color, float $price)
     {
-        $this->color = $color;
+        $this->color = $color;  //assigning values to the properties
         $this->price = $price;
-        $this->temperature = "cold";
+        $this->temperature = 'cold';    //temperature gets default-value
     }
 
-    public function getInfo(): void                 //void: nothing will be returned
+    /**
+     * @return void
+     */
+    public function getInfo(): void
     {
-        echo "This beverage is $this->temperature and $this->color";
+        echo "This beverage is $this->temperature and $this->color";    //echo to print.
     }
 
-    public function changePrice(float $price)       //method to change the price without getting and setting the price
+//TODO: Change the price to 3.5 euro and print it also on the screen on a new line.
+    public function changePrice(float $price)
     {
-        if ($price < 0) {                           //if price less than 0,
-            return Error("price can't be negative");//an error message will appear
+        if ($price < 0) {
+            return Error('Price can not be negative!');
         }
-        $this->price = $price;                      //otherwise, the new price will be displayed
+        $this->price = $price;  //price needs to be set to public!!
     }
 }
 
-$cola = new Beverage("black", 2);
-//$cola->temperature = "hot";
-$cola->getInfo();
+//TODO: Fix the errors without using getter and setter functions.
+//no errors appeared
+$cola = new Beverage("black", 2); //new object from class = child.
+//$cola->temperature = "hot";                 //change the default-value.
+$cola->getInfo();                             //display the getInfo of the new object.
 echo "<br>";
-$cola->changePrice(3.5);                    //display the new price.
-echo $cola->price;
+$cola->changePrice(3.5);                //change the price
+echo $cola->price;                          //display the changed price

@@ -22,7 +22,7 @@ front to control where they can be accessed:
     (these access modifiers are also used when creating methods)
 - followed by a SCALAR DATA TYPE: string, integer(10°, integerstring("10"), float("10.5")
 3. ADD METHODS: which also starts with a MODIFIER, followed by a function name and parameter(s) to represent the objects behaviour.
-- The first method is the constructor or __construct(arguments) function.  This function will be called auto-
+- The first method is the constructor or __construct(arguments exept the ones that will get a default value) function.  This function will be called auto-
 matically when a new object is created.
 - Followed by other methods.  to create a method: modifier, function-name(parameter-list): scalar-data-type (void doesn't return anything)
 - IMPLEMENTATION inside tha function:
@@ -36,7 +36,7 @@ matically when a new object is created.
 - object-name (variable)
 - =
 - new
-- class-name();
+- class-name(new values);
 
 ## Exercise 2: Learn how to create a class that extents from a class (sub-class), learn how to create & call get methods.
 1. Create the class:

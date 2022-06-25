@@ -3,60 +3,69 @@
 declare(strict_types=1);
 
 /* EXERCISE 3
-
 TODO: Copy the code of exercise 2 to here and delete everything related to cola.
-TODO: Make all properties private.
-TODO: Make all the other prints work without error.
-TODO: After fixing the errors. Change the color of Duvel to light instead of blond and also print this new color on the screen after all the other things that were already printed (to be sure that the color has changed).
-TODO: Create a new private method in the Beer class called beerInfo which returns "Hi i'm Duvel and have an alcochol percentage of 8.5 and I have a light color."
-Make sure that you use the variables and not just this text line.
-TODO: Print this method on the screen on a new line.
-
-USE TYPEHINTING EVERYWHERE!
+USE TYPE HINTING EVERYWHERE!
 */
-class Beverage {
-    private string $color;          //private properties can only be accessed from within the class
+
+class Beverage
+{
+// TODO: Make all properties private.
+    private string $color;           //private = can only be accessed from within class.
     private float $price;
     private string $temperature;
 
-    /**
+    /**                              //annotations provide supplemental information.
      * @param string $color
-     * @param float|int $price
+     * @param float $price
      */
     public function __construct(string $color, float $price)
     {
-        $this->color = $color;
+        $this->color = $color;  //assigning values to the properties
         $this->price = $price;
-        $this->temperature = "cold";
+        $this->temperature = 'cold';    //temperature gets default-value
     }
 
     /**
      * @return string
      */
-    public function getColor(): string      // Method to get the color.
+    public function getColor(): string
     {
         return $this->color;
     }
 
+    /**
+     * @return void
+     */
     public function getInfo(): void
     {
-        echo "This beverage is $this->temperature and $this->color";
+        echo "This beverage is $this->temperature and $this->color";    //echo to print.
     }
 }
 
-class Beer extends Beverage {
+class Beer extends Beverage
+{
+// TODO: Make all properties private.
     private string $name;
     private float $alcoholPercentage;
 
     /**
      * @param string $name
      * @param float $alcoholPercentage
+     * @param string $color
+     * @param float $price
      */
     public function __construct(string $name, float $alcoholPercentage, string $color, float $price)
     {
         parent:: __construct($color, $price);
         $this->name = $name;
         $this->alcoholPercentage = $alcoholPercentage;
+    }
+
+//TODO: Create a new private method in the Beer class called beerInfo which returns "Hi i'm Duvel and have an alcochol percentage of 8.5 and I have a light color."
+//Make sure that you use the variables and not just this text line.
+    public function beerInfo(): void
+    { //use $this to reference the current object.
+        echo "Hi i'm $this->name and have an alcochol percentage of $this->alcoholPercentage and I have a $this->color color.";
     }
 
     /**
@@ -67,29 +76,38 @@ class Beer extends Beverage {
         return $this->alcoholPercentage;
     }
 
+    //TODO: After fixing the errors. Change the color of Duvel to light instead of blond and also print this new color on the screen after all the other things that were already printed (to be sure that the color has changed).
+
     /**
      * @param string $color
      */
-    public function setColor(string $color): string         //Method to change the color of Duvel to light instead of blond
+    public function setColor(string $color): string
     {
         return $this->color = $color;
     }
-
-    public function beerInfo(): void                       // Create a new private method in the Beer class called beerInfo which returns "Hi i'm Duvel and have an alcochol percentage of 8.5 and I have a light color."
-    {
-        echo "Hi i'm $this->name and have an alcohol percentage of $this->alcoholPercentage and I have a $this->color color.";
-    }
 }
-$duvel = new Beer("Duvel", 8.5, "blond", 3.5);
-echo "<br>";
+
+##ex1
+// TODO: delete everything related to cola.
+//$cola = new Beverage("black", 2); //new object from class = child.
+//$cola->temperature = "hot";                 //change the default-value.
+//$cola->getInfo();                              //display the getInfo of the new object.
+//echo "<br>";
+
+##ex2
+$duvel = new Beer('duvel', 8.5, 'blond', 3.5);
 echo $duvel->getAlcoholPercentage();
+//Make sure that each print is on a different line.
 echo "<br>";
-echo $duvel->getAlcoholPercentage();
+//TODO: Make all the other prints work without error.
+//echo $duvel->alcoholPercentage;  //cannot access private property only trough getAlcoholPercentage!
 echo "<br>";
+//echo $duvel->color;  //cannot access private property only through getColor method!
 echo $duvel->getColor();
 echo "<br>";
-$duvel->getInfo();
+echo $duvel->getInfo();
 echo "<br>";
-echo $duvel->setColor("Light");  //print this new color on the screen
+//TODO: After fixing the errors. Change the color of Duvel to light instead of blond and also print this new color on the screen after all the other things that were already printed (to be sure that the color has changed).
+echo $duvel->setColor('light');
 echo "<br>";
-echo $duvel->beerInfo();
+echo $duvel->beerInfo(); //needed to change the method into public to call it from outside the class.

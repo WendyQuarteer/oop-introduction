@@ -3,52 +3,57 @@
 declare(strict_types=1);
 
 /* EXERCISE 4
-
-Copy the code of exercise 3 to here and delete everything related to cola.
-
-TODO: Make all properties protected.
-TODO: Make all the other prints work without error without changing the beverage class.
+Copy the code of exercise 3.
 
 USE TYPEHINTING EVERYWHERE!
 */
 
-class Beverage {
-    protected string $color;        // make properties protected = can be accessed within the class and by classes derived from that class.
+class Beverage
+{
+//TODO: Make all properties protected.
+    protected string $color;           //protected = accessed from within class or classes derived from this class.
     protected float $price;
     protected string $temperature;
 
-    /**
+    /**                              //annotations provide supplemental information.
      * @param string $color
-     * @param float|int $price
+     * @param float $price
      */
     public function __construct(string $color, float $price)
     {
-        $this->color = $color;
+        $this->color = $color;  //assigning values to the properties
         $this->price = $price;
-        $this->temperature = "cold";
+        $this->temperature = 'cold';    //temperature gets default-value
     }
 
     /**
      * @return string
      */
-    public function getColor(): string              //string: a string will be returned
+    public function getColor(): string
     {
         return $this->color;
     }
 
-    public function getInfo(): void                 //void: nothing will be returned
+    /**
+     * @return void
+     */
+    public function getInfo(): void
     {
-        echo "This beverage is $this->temperature and $this->color";
+        echo "This beverage is $this->temperature and $this->color";    //echo to print.
     }
 }
 
-class Beer extends Beverage {
+class Beer extends Beverage
+{
+    //TODO: Make all properties protected.
     protected string $name;
     protected float $alcoholPercentage;
 
     /**
      * @param string $name
      * @param float $alcoholPercentage
+     * @param string $color
+     * @param float $price
      */
     public function __construct(string $name, float $alcoholPercentage, string $color, float $price)
     {
@@ -57,10 +62,15 @@ class Beer extends Beverage {
         $this->alcoholPercentage = $alcoholPercentage;
     }
 
+    public function beerInfo(): void
+    { //use $this to reference the current object.
+        echo "Hi i'm $this->name and have an alcochol percentage of $this->alcoholPercentage and I have a $this->color color.";
+    }
+
     /**
      * @return float
      */
-    public function getAlcoholPercentage(): float           //float: a decimal number will be returned
+    public function getAlcoholPercentage(): float
     {
         return $this->alcoholPercentage;
     }
@@ -68,26 +78,32 @@ class Beer extends Beverage {
     /**
      * @param string $color
      */
-    public function setColor(string $color)
+    public function setColor(string $color): string
     {
-        $this->color = $color;
-    }
-
-    public function beerInfo(): void            // method needs to be public in order to get access to the properties.
-    {
-        echo "Hi i'm $this->name and have an alcohol percentage of $this->alcoholPercentage and I have a $this->color color.";
+        return $this->color = $color;
     }
 }
-$duvel = new Beer("Duvel", 8.5, "blond", 3.5);
-echo "<br>";
+
+##ex1
+// TODO: delete everything related to cola.
+//$cola = new Beverage("black", 2); //new object from class = child.
+//$cola->temperature = "hot";                 //change the default-value.
+//$cola->getInfo();                              //display the getInfo of the new object.
+//echo "<br>";
+
+##ex2
+//TODO: Make all the other prints work without error without changing the beverage class.
+$duvel = new Beer('duvel', 8.5, 'blond', 3.5);
 echo $duvel->getAlcoholPercentage();
+//Make sure that each print is on a different line.
 echo "<br>";
-echo $duvel->getAlcoholPercentage();
+//echo $duvel->alcoholPercentage;  //cannot access protected property only trough getAlcoholPercentage!
 echo "<br>";
+//echo $duvel->color;  //cannot access protected property only through getColor method!
 echo $duvel->getColor();
 echo "<br>";
-$duvel->getInfo();
+echo $duvel->getInfo();
 echo "<br>";
-echo $duvel->setColor("Light");
+echo $duvel->setColor('light');
 echo "<br>";
-echo $duvel->beerInfo();
+echo $duvel->beerInfo(); //needed to change the method into public to call it from outside the class.
